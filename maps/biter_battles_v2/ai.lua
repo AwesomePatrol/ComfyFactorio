@@ -20,14 +20,14 @@ local size_of_vectors = #attack_vectors.north
 ]]
 
 local threat_values = {
-	["small-spitter"] = 1.5,
-	["small-biter"] = 1.5,
-	["medium-spitter"] = 4,
-	["medium-biter"] = 4,
+	["small-spitter"] = 3,
+	["small-biter"] = 3,
+	["medium-spitter"] = 6,
+	["medium-biter"] = 6,
 	["big-spitter"] = 12,
 	["big-biter"] = 12,
-	["behemoth-spitter"] = 32,
-	["behemoth-biter"] = 32,
+	["behemoth-spitter"] = 24,
+	["behemoth-biter"] = 24,
 	["small-worm-turret"] = 8,
 	["medium-worm-turret"] = 12,
 	["big-worm-turret"] = 16,
