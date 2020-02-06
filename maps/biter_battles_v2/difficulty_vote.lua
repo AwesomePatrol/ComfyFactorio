@@ -89,7 +89,7 @@ local function on_player_joined_game(event)
 			if global.bb_settings.only_admins_vote or global.tournament_mode then
 				if player.admin then poll_difficulty(player) end
 			else
-				poll_difficulty(player)
+				--poll_difficulty(player)
 			end
 		end
 	else
