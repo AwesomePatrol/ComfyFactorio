@@ -24,13 +24,13 @@ function Public.surface()
 	map_gen_settings.terrain_segmentation = 0.3
 	map_gen_settings.cliff_settings = {cliff_elevation_interval = 0, cliff_elevation_0 = 0}
 	map_gen_settings.autoplace_controls = {
-		["coal"] = {frequency = 2.5, size = 0.65, richness = 0.5},
-		["stone"] = {frequency = 2.5, size = 0.65, richness = 0.5},
-		["copper-ore"] = {frequency = 3.5, size = 0.65, richness = 0.5},
-		["iron-ore"] = {frequency = 3.5, size = 0.65, richness = 0.5},
-		["uranium-ore"] = {frequency = 2, size = 1, richness = 1},
-		["crude-oil"] = {frequency = 3, size = 1, richness = 0.75},
-		["trees"] = {frequency = 1.1, size = 1.6, richness = 0.4},
+		["coal"] = {frequency = 1.1, size = 1.6, richness = 0.2},
+		["stone"] = {frequency = 1.1, size = 1.7, richness = 0.2},
+		["copper-ore"] = {frequency = 1.9, size = 1.8, richness = 0.2},
+		["iron-ore"] = {frequency = 1.9, size = 1.8, richness = 0.2},
+		["uranium-ore"] = {frequency = 0.3, size = 0.8, richness = 0.4},
+		["crude-oil"] = {frequency = 0.8, size = 1.8, richness = 0.35},
+		["trees"] = {frequency = 1.4, size = 0.5, richness = 0.25},
 		["enemy-base"] = {frequency = 0, size = 0, richness = 0}
 	}
 	game.create_surface("biter_battles", map_gen_settings)
