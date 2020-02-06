@@ -8,12 +8,12 @@ function Public.settings()
 	
 	global.bb_settings = {
 		--TEAM SETTINGS--
-		["team_balancing"] = true,			--Should players only be able to join a team that has less or equal members than the opposing team?
-		["only_admins_vote"] = false,		--Are only admins able to vote on the global difficulty?
+		["team_balancing"] = false,			--Should players only be able to join a team that has less or equal members than the opposing team?
+		["only_admins_vote"] = true,		--Are only admins able to vote on the global difficulty?
 		
 		--GENERAL SETTINGS--
 		["blueprint_library_importing"] = false,		--Allow the importing of blueprints from the blueprint library?
-		["blueprint_string_importing"] = false,		--Allow the importing of blueprints via blueprint strings?
+		["blueprint_string_importing"] = true,		--Allow the importing of blueprints via blueprint strings?
 	}
 end
 
