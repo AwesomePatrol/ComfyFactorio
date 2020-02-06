@@ -113,7 +113,7 @@ local function on_gui_click(event)
 	if not event.element.valid then return end
 	local player = game.players[event.element.player_index]
 	if event.element.name == "difficulty_gui" then
-		poll_difficulty(player)
+		--poll_difficulty(player)
 		return
 	end
 	if event.element.type ~= "button" then return end
