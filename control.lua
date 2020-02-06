@@ -3,28 +3,28 @@ _LIFECYCLE = _STAGE.control -- Control stage
 _DEBUG = true
 _DUMP_ENV = false
 
-require 'utils.server'
-require "utils.server_commands"
+--require 'utils.server'
+--require "utils.server_commands"
 require "utils.utils"
-require "utils.table"
-require "utils.color_data"
-require "utils.session_data"
-require "chatbot"
-require "commands"
-require "antigrief"
+--require "utils.table"
+--require "utils.color_data"
+--require "utils.session_data"
+--require "chatbot"
+--require "commands"
+--require "antigrief"
 require "modules.corpse_markers"
 require "modules.floaty_chat"
-require "modules.autohotbar"
+--require "modules.autohotbar"
 
-require "comfy_panel.main"
-require "comfy_panel.player_list"
-require "comfy_panel.admin"
-require "comfy_panel.group"
-require "comfy_panel.poll"
-require "comfy_panel.score"
-require "comfy_panel.config"
+--require "comfy_panel.main"
+--require "comfy_panel.player_list"
+--require "comfy_panel.admin"
+--require "comfy_panel.group"
+--require "comfy_panel.poll"
+--require "comfy_panel.score"
+--require "comfy_panel.config"
 
-require "modules.autostash"
+-- require "modules.autostash"
 
 ---- enable modules here ----
 --require "modules.the_floor_is_lava"
