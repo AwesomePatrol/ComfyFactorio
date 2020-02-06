@@ -2,7 +2,7 @@ local Public = {}
 
 function Public.settings()
 	global.gui_refresh_delay = 0
-	global.game_lobby_active = true
+	global.game_lobby_active = false
 	global.bb_debug = false
 	global.combat_balance = {}
 	
