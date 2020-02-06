@@ -1,6 +1,6 @@
 require 'utils.data_stages'
 _LIFECYCLE = _STAGE.control -- Control stage
-_DEBUG = false
+_DEBUG = true
 _DUMP_ENV = false
 
 require 'utils.server'
@@ -68,7 +68,7 @@ require "modules.autostash"
 
 ---- enable maps here ---- (maps higher up in the list may be more actually playable)
 --require "maps.fish_defender.main"
---require "maps.biter_battles_v2.main"
+require "maps.biter_battles_v2.main"
 --require "maps.native_war.main"
 --require "maps.mountain_fortress_v2.main"
 --require "maps.island_troopers.main"
