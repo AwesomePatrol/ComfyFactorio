@@ -363,9 +363,12 @@ local function create_attack_group(surface, force_name, biter_force_name)
 		return false 
 	end
 
-	local nearest_player_unit = surface.find_nearest_enemy({position = spawner.position, max_distance = 2048, force = biter_force_name})
+	local nearest_player_unit = false
+	if math_random(1,3) == 1 then
+		nearest_player_unit = game.forces[force_name].connected_players[math_random(1, #game.forces[force_name].connected_players)]
+	end
 	if not nearest_player_unit then nearest_player_unit = global.rocket_silo[force_name] end
-	
+
 	local unit_group_position = get_unit_group_position(surface, nearest_player_unit, spawner)
 	
 	local units = select_units_around_spawner(spawner, force_name, biter_force_name)
