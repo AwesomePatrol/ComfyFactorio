@@ -254,7 +254,6 @@ end
 
 local function send_group(unit_group, force_name, nearest_player_unit)
 	local target = nearest_player_unit.position
-	if math_random(1,2) == 1 then target = global.rocket_silo[force_name].position end
 	
 	local commands = {}
 	
@@ -277,7 +276,7 @@ local function send_group(unit_group, force_name, nearest_player_unit)
 	commands[#commands + 1] = {
 		type = defines.command.attack_area,
 		destination = target,
-		radius = 32,
+		radius = 48,
 		distraction = defines.distraction.by_enemy
 	}
 	
