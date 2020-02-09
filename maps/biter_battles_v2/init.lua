@@ -19,9 +19,9 @@ end
 
 function Public.surface()
 	local map_gen_settings = {}
-	map_gen_settings.water = 0.3
+	map_gen_settings.water = 0.25
 	map_gen_settings.starting_area = 2.5
-	map_gen_settings.terrain_segmentation = 0.3
+	map_gen_settings.terrain_segmentation = 4.0
 	map_gen_settings.cliff_settings = {cliff_elevation_interval = 0, cliff_elevation_0 = 0}
 	map_gen_settings.autoplace_controls = {
 		["coal"] = {frequency = 1.1, size = 1.6, richness = 0.2},
