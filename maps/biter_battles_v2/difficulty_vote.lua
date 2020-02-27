@@ -80,7 +80,7 @@ end
 
 local function on_player_joined_game(event)
 	if not global.difficulty_vote_value then global.difficulty_vote_value = 1 end
-	if not global.difficulty_vote_index then global.difficulty_vote_index = 4 end
+	if not global.difficulty_vote_index then global.difficulty_vote_index = 5 end
 	if not global.difficulty_player_votes then global.difficulty_player_votes = {} end
 	
 	local player = game.players[event.player_index]
