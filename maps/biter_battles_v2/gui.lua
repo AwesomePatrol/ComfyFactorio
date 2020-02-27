@@ -291,6 +291,9 @@ function join_team(player, force_name, forced_join)
 				return
 			end
 		end
+        if #game.forces[force_name].connected_players > 0 and #game.forces[enemy_team].connected_players > 0 then
+            global.training_mode = false
+        end
 		local p = surface.find_non_colliding_position("character", game.forces[force_name].get_spawn_position(surface), 8, 1)
 		player.teleport(p, surface)
 		player.force = game.forces[force_name]
