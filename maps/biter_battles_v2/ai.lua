@@ -437,7 +437,7 @@ Public.raise_evo = function()
 
 	local amount = math.ceil(global.evo_raise_counter * 0.75)
 
-	if not global.total_passive_feed_redpotion then global.total_passive_feed_redpotion = 0 end
+    if not global.total_passive_feed_redpotion then global.total_passive_feed_redpotion = 0 end
 	global.total_passive_feed_redpotion = global.total_passive_feed_redpotion + amount
 
 	local biter_teams = {["north_biters"] = "north", ["south_biters"] = "south"}
