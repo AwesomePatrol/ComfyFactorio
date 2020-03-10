@@ -1,3 +1,4 @@
+local Public = {}
 local bb_config = require "maps.biter_battles_v2.config"
 local Server = require 'utils.server'
 
@@ -184,7 +185,7 @@ function set_evo_and_threat(flask_amount, food, biter_force_name)
 	set_biter_endgame_modifiers(game.forces[biter_force_name])
 end
 
-local function feed_biters(player, food)	
+Public.feed_biters = function(player, food)	
 	local enemy_force_name = get_enemy_team_of(player.force.name)  ---------------
 	--enemy_force_name = player.force.name
 	
@@ -208,4 +209,14 @@ local function feed_biters(player, food)
 	add_stats(player, food, flask_amount ,biter_force_name, evolution_before_feed, threat_before_feed)
 end
 
-return feed_biters
+Public.auto_feed_biters = function(biter_force_name, food, flask_amount, t)
+    game.print("auto feeding " .. flask_amount .. " flasks to Team South's Biters at minute " .. t)
+	local evolution_before_feed = global.bb_evolution[biter_force_name]
+	local threat_before_feed = global.bb_threat[biter_force_name]						
+	
+	set_evo_and_threat(flask_amount, food, biter_force_name)
+	
+	--add_stats(player, food, flask_amount ,biter_force_name, evolution_before_feed, threat_before_feed)
+end
+
+return Public

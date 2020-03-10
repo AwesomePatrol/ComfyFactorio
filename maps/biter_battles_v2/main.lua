@@ -14,6 +14,7 @@ local Mirror_terrain = require "maps.biter_battles_v2.mirror_terrain"
 local No_turret_creep = require "maps.biter_battles_v2.no_turret_creep"
 local Team_manager = require "maps.biter_battles_v2.team_manager"
 local Terrain = require "maps.biter_battles_v2.terrain"
+local Feeding = require "maps.biter_battles_v2.feeding"
 
 require "maps.biter_battles_v2.map_settings_tab"
 require "maps.biter_battles_v2.sciencelogs_tab"
@@ -91,6 +92,33 @@ local function on_entity_damaged(event)
 	entity.health = entity.health + event.final_damage_amount
 end
 
+local auto_feed_values = {
+    [20] = 3,
+    [21] = 117,
+    [23] = 84,
+    [25] = 182,
+    [27] = 112,
+    [30] = 429,
+    [32] = 158,
+    [34] = 457,
+    [36] = 311,
+    [37] = 230,
+    [38] = 76,
+    [39] = 140,
+    [40] = 65
+}
+
+local function auto_feed()
+    -- get game time minute
+    local minute = math.floor(game.tick / 3600)
+    for t, val in pairs(auto_feed_values) do
+        if t == minute then
+            Feeding.auto_feed_biters("south_biters", "logistic-science-pack", val, t)
+            return
+        end
+    end
+end
+
 local tick_minute_functions = {
 	[300 * 1] = Ai.raise_evo,
 	[300 * 2] = Ai.destroy_inactive_biters,
@@ -105,6 +133,7 @@ local tick_minute_functions = {
 	[300 * 3 + 30 * 8] = Ai.post_main_attack,
 	[300 * 4] = Ai.send_near_biters_to_silo,
 	[300 * 5] = Ai.wake_up_sleepy_groups,
+    [300 * 6] = auto_feed,
 	[300 * 7] = Game_over.restart_idle_map,
 }
 

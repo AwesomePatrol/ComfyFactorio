@@ -405,7 +405,7 @@ local function on_gui_click(event)
 
 	if name == "raw-fish" then spy_fish(player) return end
 
-	if food_names[name] then feed_the_biters(player, name) return end
+	if food_names[name] then feed_the_biters.feed_biters(player, name) return end
 
 	if name == "bb_leave_spectate" then join_team(player, global.chosen_team[player.name])	end
 
