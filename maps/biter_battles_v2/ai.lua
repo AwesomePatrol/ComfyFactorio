@@ -366,6 +366,9 @@ end
 Public.pre_main_attack = function()
 	local surface = game.surfaces["biter_battles"]
 	local force_name = global.next_attack
+    if #game.forces[force_name].connected_players == 0 then
+        return
+    end
 
 	if not global.training_mode or (global.training_mode and #game.forces[force_name].connected_players > 0) then
 		local biter_force_name = force_name .. "_biters"
@@ -448,12 +451,9 @@ Public.raise_evo = function()
 	local biter_teams = {["north_biters"] = "north", ["south_biters"] = "south"}
 	local a_team_has_players = false
 	for bf, pf in pairs(biter_teams) do
-		if #game.forces[pf].connected_players > 0 then
 			set_evo_and_threat(amount, "automation-science-pack", bf)
 			a_team_has_players = true
-		end
 	end
-	if not a_team_has_players then return end
 	global.evo_raise_counter = global.evo_raise_counter + (1 * 0.50)
 end
 
