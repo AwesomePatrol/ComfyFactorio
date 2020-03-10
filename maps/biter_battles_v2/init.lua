@@ -154,7 +154,6 @@ function Public.forces()
 	global.bb_threat = {}
 	global.chunks_to_mirror = {}
 	global.map_pregen_message_counter = {}
-    global.training_mode = true
 
 	for _, force in pairs(game.forces) do
 		game.forces[force.name].technologies["artillery"].enabled = false
