@@ -66,6 +66,33 @@ local function on_entity_died(event)
 	Game_over.silo_death(event)
 end
 
+local auto_feed_values = {
+    [20] = 3,
+    [21] = 117,
+    [23] = 84,
+    [25] = 182,
+    [27] = 112,
+    [30] = 429,
+    [32] = 158,
+    [34] = 457,
+    [36] = 311,
+    [37] = 230,
+    [38] = 76,
+    [39] = 140,
+    [40] = 65
+}
+
+local function auto_feed()
+    -- get game time minute
+    local minute = math.floor(game.tick / 3600)
+    for t, val in pairs(auto_feed_values) do
+        if t == minute then
+            feeding.auto_feed_biters("south_biters", "logistic-science-pack", val, t)
+            return
+        end
+    end
+end
+
 local tick_minute_functions = {
 	[300 * 1] = Ai.raise_evo,
 	[300 * 2] = Ai.destroy_inactive_biters,
@@ -80,6 +107,7 @@ local tick_minute_functions = {
 	[300 * 3 + 30 * 8] = Ai.post_main_attack,
 	[300 * 4] = Ai.send_near_biters_to_silo,
 	[300 * 5] = Ai.wake_up_sleepy_groups,
+    [300 * 6] = auto_feed,
 }
 
 local function on_tick()
