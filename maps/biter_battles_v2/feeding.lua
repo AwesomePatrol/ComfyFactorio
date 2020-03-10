@@ -212,4 +212,16 @@ local function feed_biters(player, food)
 	add_stats(player, food, flask_amount ,biter_force_name, evolution_before_feed, threat_before_feed)
 end
 
-return feed_biters
+Public.set_biter_modifiers = set_biter_modifiers
+Public.feed_biters = feed_biters
+Public.auto_feed_biters = function(biter_force_name, food, flask_amount, t)
+    game.print("auto feeding " .. flask_amount .. " flasks to Team South's Biters at minute " .. t)
+	local evolution_before_feed = global.bb_evolution[biter_force_name]
+	local threat_before_feed = global.bb_threat[biter_force_name]						
+	
+	set_evo_and_threat(flask_amount, food, biter_force_name)
+	
+	--add_stats(player, food, flask_amount ,biter_force_name, evolution_before_feed, threat_before_feed)
+end
+
+return Public
