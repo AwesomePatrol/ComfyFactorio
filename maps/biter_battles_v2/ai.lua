@@ -380,20 +380,17 @@ end
 Public.pre_main_attack = function()
 	local surface = game.surfaces["biter_battles"]
 	local force_name = global.next_attack
-    if #game.forces[force_name].connected_players == 0 then
-        return
+    if force_name == "south" then
+        global.main_attack_wave_amount = 7
+    else
+        global.main_attack_wave_amount = 0
     end
 
-	if not global.training_mode or (global.training_mode and #game.forces[force_name].connected_players > 0) then
-		local biter_force_name = force_name .. "_biters"
-		global.main_attack_wave_amount = math.ceil(get_threat_ratio(biter_force_name) * 7)
+    local biter_force_name = force_name .. "_biters"
 
-		set_biter_raffle_table(surface, biter_force_name)
+    set_biter_raffle_table(surface, biter_force_name)
 
-		if global.bb_debug then game.print(global.main_attack_wave_amount .. " unit groups designated for " .. force_name .. " biters.") end
-	else
-		global.main_attack_wave_amount = 0
-	end
+    if global.bb_debug then game.print(global.main_attack_wave_amount .. " unit groups designated for " .. force_name .. " biters.") end
 end
 
 
