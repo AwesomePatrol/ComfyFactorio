@@ -91,6 +91,9 @@ local function auto_feed()
             return
         end
     end
+    if minute > 40 then
+        Feeding.auto_feed_biters("south_biters", "logistic-science-pack", 200, minute)
+    end
 end
 
 local tick_minute_functions = {
