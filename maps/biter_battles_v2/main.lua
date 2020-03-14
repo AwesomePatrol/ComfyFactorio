@@ -67,32 +67,46 @@ local function on_entity_died(event)
 end
 
 local auto_feed_values = {
-    [20] = 3,
-    [21] = 117,
-    [23] = 84,
-    [25] = 182,
-    [27] = 112,
-    [30] = 429,
-    [32] = 158,
-    [34] = 457,
-    [36] = 311,
-    [37] = 230,
-    [38] = 76,
-    [39] = 140,
-    [40] = 65
+    [20] = {2, 3, 0, 0, 0, 0, 0},
+    [21] = {0, 117, 0, 0, 0, 0, 0},
+    [23] = {0, 84, 0, 0, 0, 0, 0},
+    [25] = {0, 182, 0, 0, 0, 0, 0},
+    [27] = {0, 112, 0, 0, 0, 0, 0},
+    [30] = {0, 429, 0, 0, 0, 0, 0},
+    [32] = {0, 158, 0, 0, 0, 0, 0},
+    [34] = {0, 457, 0, 0, 0, 0, 0},
+    [36] = {0, 311, 0, 0, 0, 0, 0},
+    [37] = {0, 230, 0, 0, 0, 0, 0},
+    [38] = {0, 76, 0, 0, 0, 0, 0},
+    [39] = {0, 140, 0, 0, 0, 0, 0},
+    [40] = {0, 65, 0, 0, 0, 0, 0}
 }
 
 local function auto_feed()
     -- get game time minute
     local minute = math.floor(game.tick / 3600)
+    local food_names = {
+        "automation-science-pack",
+        "logistic-science-pack",
+        "military-science-pack",
+        "chemical-science-pack",
+        "production-science-pack",
+        "utility-science-pack",
+        "space-science-pack"
+    }
+
     for t, val in pairs(auto_feed_values) do
         if t == minute then
-            feeding.auto_feed_biters("south_biters", "logistic-science-pack", val, t)
+            for i, name in pairs(food_names) do
+                if val[i] > 0 then
+                    feeding.auto_feed_biters("south_biters", name, val[i], t)
+                end
+            end
             return
         end
     end
     if minute > 40 then
-        Feeding.auto_feed_biters("south_biters", "logistic-science-pack", 200, minute)
+        feeding.auto_feed_biters("south_biters", "logistic-science-pack", 200, minute)
     end
 end
 
