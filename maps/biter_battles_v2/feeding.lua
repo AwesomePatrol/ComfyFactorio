@@ -210,7 +210,7 @@ Public.feed_biters = function(player, food)
 end
 
 Public.auto_feed_biters = function(biter_force_name, food, flask_amount, t)
-    game.print("auto feeding " .. flask_amount .. " flasks to Team South's Biters at minute " .. t)
+    game.print("auto feeding " .. flask_amount .. " " .. food .. " to Team South's Biters at minute " .. t)
 	local evolution_before_feed = global.bb_evolution[biter_force_name]
 	local threat_before_feed = global.bb_threat[biter_force_name]						
 	
