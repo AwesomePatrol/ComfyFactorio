@@ -94,13 +94,19 @@ end
 
 local auto_feed_values = {
     [31] = {23, 28, 0, 0, 0, 0, 0},
+    [32] = {0, 150, 0, 0, 0, 0, 0},
     [34] = {59, 78, 0, 0, 0, 0, 0},
+    [35] = {0, 150, 0, 0, 0, 0, 0},
     [36] = {57, 82, 0, 0, 0, 0, 0},
     [37] = {60, 24, 0, 0, 0, 0, 0},
     [38] = {34, 35, 0, 0, 0, 0, 0},
+    [39] = {0, 150, 0, 0, 0, 0, 0},
     [40] = {17, 73, 0, 0, 0, 0, 0},
+    [41] = {0, 150, 0, 0, 0, 0, 0},
     [43] = {74, 208, 0, 0, 0, 0, 0},
+    [45] = {0, 250, 0, 0, 0, 0, 0},
     [46] = {105, 138, 0, 0, 0, 0, 0},
+    [47] = {0, 250, 0, 0, 0, 0, 0},
     [49] = {74, 114, 30, 0, 0, 0, 0},
     [52] = {16, 16, 59, 0, 0, 0, 0},
     [54] = {100, 100, 129, 0, 0, 0, 0},
@@ -137,7 +143,11 @@ local function auto_feed()
         Feeding.auto_feed_biters("south_biters", "military-science-pack", 200, minute)
     end
     if minute > 100 then
-        Feeding.auto_feed_biters("south_biters", "chemical-science-pack", 150, minute)
+        if minute < 150 then
+            Feeding.auto_feed_biters("south_biters", "chemical-science-pack", 150, minute)
+        else
+            Feeding.auto_feed_biters("south_biters", "chemical-science-pack", 250, minute)
+        end
     end
 end
 
