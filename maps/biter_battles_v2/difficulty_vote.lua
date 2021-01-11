@@ -104,7 +104,7 @@ local function go_to_round_two()
     for key, _ in pairs(difficulties) do
         if votes[key] < cut_off then
             difficulties[key] = nil
-        else if votes[key] == max_val then
+        elseif votes[key] == max_val then
 	        new_index = key
         end
     end
