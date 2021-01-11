@@ -115,6 +115,10 @@ local function go_to_round_two()
 	global.difficulty_votes_timeout = game.ticks_played + global.difficulty_votes_timeout
     -- Update difficulty
     update_diff(new_index)
+	-- Send new poll
+    for _, player in pairs(game.connected_players) do
+        poll_difficulty(player)
+    end
 end
 
 local function on_player_joined_game(event)
