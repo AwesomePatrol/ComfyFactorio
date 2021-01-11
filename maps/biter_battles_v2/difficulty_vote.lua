@@ -62,7 +62,7 @@ local function poll_difficulty(player)
 	b.style.minimal_width = 96
 end
 
-local function update_diff()
+local function update_diff(new_index)
 	if global.difficulty_vote_index ~= new_index then
 		local message = table.concat({">> Map difficulty has changed to ", difficulties[new_index].name, " difficulty!"})
 		game.print(message, difficulties[new_index].print_color)
