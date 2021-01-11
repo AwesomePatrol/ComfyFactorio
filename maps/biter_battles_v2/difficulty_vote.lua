@@ -83,6 +83,28 @@ local function set_difficulty()
 	 global.difficulty_vote_value = difficulties[new_index].value
 end
 
+local function go_to_round_two()
+    local votes = {}
+	for _, d in pairs(global.difficulty_player_votes) do
+		votes[d] = votes[d] + 1
+	end
+    local sorted_votes = {table.unpack(votes)}
+    table.sort(sorted_votes)
+	local cut_off = sorted_vores[#sorted_votes - 1] -- get the second highest value
+
+    -- nullify difficulties that didn't make it to round 2
+    for key, _ in pairs(difficulties) do
+        if votes[key] < cut_off then
+            difficulties[key] = nil
+        end
+    end
+
+    -- Reset votes
+	global.difficulty_player_votes = {}
+    -- Reset timeout
+	global.difficulty_votes_timeout = game.ticks_played + global.difficulty_votes_timeout
+end
+
 local function on_player_joined_game(event)
 	if not global.difficulty_vote_value then global.difficulty_vote_value = 1 end
 	if not global.difficulty_vote_index then global.difficulty_vote_index = 4 end
