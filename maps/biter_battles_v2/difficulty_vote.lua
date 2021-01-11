@@ -48,10 +48,12 @@ local function poll_difficulty(player)
 	
 	local frame = player.gui.center.add { type = "frame", caption = "Vote global difficulty:", name = "difficulty_poll", direction = "vertical" }
 	for key, _ in pairs(difficulties) do
-		local b = frame.add({type = "button", name = tostring(key), caption = difficulties[key].name .. " (" .. difficulties[key].str .. ")"})
-		b.style.font_color = difficulties[key].color
-		b.style.font = "heading-2"
-		b.style.minimal_width = 180
+        if difficulties[key] ~= nil then
+            local b = frame.add({type = "button", name = tostring(key), caption = difficulties[key].name .. " (" .. difficulties[key].str .. ")"})
+            b.style.font_color = difficulties[key].color
+            b.style.font = "heading-2"
+            b.style.minimal_width = 180
+        end
 	end
 	local b = frame.add({type = "label", caption = "- - - - - - - - - - - - - - - - - - - -"})
 	local b = frame.add({type = "button", name = "close", caption = "Close (" .. math.floor((global.difficulty_votes_timeout - tick) / 3600) .. " minutes left)"})
@@ -59,6 +61,16 @@ local function poll_difficulty(player)
 	b.style.font = "heading-3"
 	b.style.minimal_width = 96
 end
+
+local function update_diff()
+	if global.difficulty_vote_index ~= new_index then
+		local message = table.concat({">> Map difficulty has changed to ", difficulties[new_index].name, " difficulty!"})
+		game.print(message, difficulties[new_index].print_color)
+		Server.to_discord_embed(message)
+	end
+	 global.difficulty_vote_index = new_index
+	 global.difficulty_vote_value = difficulties[new_index].value
+ end
 
 local function set_difficulty()
 	local a = {}
@@ -74,13 +86,7 @@ local function set_difficulty()
 	v= math.round(vote_count/2, 0)
 	table.sort(a)
 	local new_index = a[v]
-	if global.difficulty_vote_index ~= new_index then
-		local message = table.concat({">> Map difficulty has changed to ", difficulties[new_index].name, " difficulty!"})
-		game.print(message, difficulties[new_index].print_color)
-		Server.to_discord_embed(message)
-	end
-	 global.difficulty_vote_index = new_index
-	 global.difficulty_vote_value = difficulties[new_index].value
+    update_diff(new_index)
 end
 
 local function go_to_round_two()
@@ -90,12 +96,16 @@ local function go_to_round_two()
 	end
     local sorted_votes = {table.unpack(votes)}
     table.sort(sorted_votes)
-	local cut_off = sorted_vores[#sorted_votes - 1] -- get the second highest value
+	local cut_off = sorted_votes[#sorted_votes - 1] -- get the second highest value
+    local max_val = sorted_votes[#sorted_votes]
 
+    local new_index = 1
     -- nullify difficulties that didn't make it to round 2
     for key, _ in pairs(difficulties) do
         if votes[key] < cut_off then
             difficulties[key] = nil
+        else if votes[key] == max_val then
+	        new_index = key
         end
     end
 
@@ -103,6 +113,8 @@ local function go_to_round_two()
 	global.difficulty_player_votes = {}
     -- Reset timeout
 	global.difficulty_votes_timeout = game.ticks_played + global.difficulty_votes_timeout
+    -- Update difficulty
+    update_diff(new_index)
 end
 
 local function on_player_joined_game(event)
