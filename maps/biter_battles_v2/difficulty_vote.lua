@@ -99,6 +99,11 @@ local function go_to_round_two()
 	local cut_off = sorted_votes[#sorted_votes - 1] -- get the second highest value
     local max_val = sorted_votes[#sorted_votes]
 
+    -- no need for the second round
+    if cut_off == 0 then
+        return
+    end
+
     local new_index = 1
     -- nullify difficulties that didn't make it to round 2
     for key, _ in pairs(difficulties) do
