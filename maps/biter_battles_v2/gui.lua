@@ -462,4 +462,50 @@ end
 event.add(defines.events.on_gui_click, on_gui_click)
 event.add(defines.events.on_player_joined_game, on_player_joined_game)
 
+commands.add_command(
+    'force-north',
+    'Forces player to team north.',
+    function(cmd)
+        local player = game.player
+
+        if player then
+            if player ~= nil then
+                if not player.admin then
+                    p("You're not admin!", {r = 1, g = 0.5, b = 0.1})
+                    return
+                end
+            end
+        end
+
+        if cmd.parameter == nil then
+            return
+        end
+        local target_player = game.players[cmd.parameter]
+        join_team(target_player, "north", true)
+    end
+)
+
+commands.add_command(
+    'force-south',
+    'Forces player to team south.',
+    function(cmd)
+        local player = game.player
+
+        if player then
+            if player ~= nil then
+                if not player.admin then
+                    p("You're not admin!", {r = 1, g = 0.5, b = 0.1})
+                    return
+                end
+            end
+        end
+
+        if cmd.parameter == nil then
+            return
+        end
+        local target_player = game.players[cmd.parameter]
+        join_team(target_player, "south", true)
+    end
+)
+
 return Public
