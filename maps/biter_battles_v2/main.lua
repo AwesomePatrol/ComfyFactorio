@@ -8,6 +8,7 @@ local Init = require "maps.biter_battles_v2.init"
 local Mirror_terrain = require "maps.biter_battles_v2.mirror_terrain"
 require 'modules.simple_tags'
 local Map_info = require 'modules.map_info'
+local Changelog = require 'comfy_panel.changelog'
 local Team_manager = require "maps.biter_battles_v2.team_manager"
 local Terrain = require "maps.biter_battles_v2.terrain"
 local feeding = require "maps.biter_battles_v2.feeding"
@@ -148,6 +149,11 @@ local function on_init()
 	T.localised_category = "biter_battles"
 	T.main_caption_color = {r = 170, g = 170, b = 0}
 	T.sub_caption_color = {r = 120, g = 120, b = 0}
+
+	local C = Changelog.Pop_changelog()
+	C.localised_category = "biter_battles"
+	C.main_caption_color = {r = 170, g = 170, b = 0}
+	C.sub_caption_color = {r = 120, g = 120, b = 0}
 end
 
 local Event = require 'utils.event'
