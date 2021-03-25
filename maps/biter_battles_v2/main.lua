@@ -84,7 +84,7 @@ local auto_feed_values = {
 
 local function auto_feed()
     -- get game time minute
-    local minute = math.floor(game.tick / 3600)
+    local minute = math.floor(game.ticks_played / 3600)
     local food_names = {
         "automation-science-pack",
         "logistic-science-pack",
