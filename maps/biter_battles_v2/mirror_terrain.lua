@@ -235,7 +235,7 @@ function Public.add_chunk(event)
 end
 
 local function clear_source_surface(terrain_gen)
-	if terrain_gen.counter % 1024 == 1023 then
+	if terrain_gen.counter % 256 == 255 then
 		terrain_gen.counter = terrain_gen.counter + 1
 		local surface = game.surfaces.bb_source
 		local c = 0
