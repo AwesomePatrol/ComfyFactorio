@@ -228,12 +228,6 @@ local function select_units_around_spawner(spawner, force_name, side_target)
 	return valid_biters
 end
 
-local group_path_flags_nocache_straight =
-{
-  cache = false,
-  prefer_straight_paths = true
-}
-
 local group_path_flags_cache_straight_lowprio =
 {
   prefer_straight_paths = true,
@@ -274,14 +268,6 @@ local function send_group(unit_group, force_name, side_target)
 			}
 		end
 	end
-	
-    commands[#commands + 1] = {
-		type = defines.command.go_to_location,
-		destination = target,
-		radius = 64,
-		distraction = defines.distraction.by_enemy,
-		pathfind_flags = group_path_flags_nocache_straight
-	}
 	
 	commands[#commands + 1] = {
 		type = defines.command.attack_area,
