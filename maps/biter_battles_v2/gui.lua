@@ -405,6 +405,10 @@ local function on_gui_click(event)
 		return
 	end
 
+    if name == "return_lobby" then
+        game.players[event.player_index].connect_to_server{address="185.102.190.121:34197"}
+    end
+
 	if name == "join_north_button" then join_gui_click(name, player) return end
 	if name == "join_south_button" then join_gui_click(name, player) return end
 
@@ -433,6 +437,16 @@ local function on_gui_click(event)
 	end
 end
 
+local function draw_return_lobby(player)
+	if player.gui.top.return_lobby then return end
+	local button = player.gui.top.add({type = "sprite-button", name = "return_lobby", caption = "Go back to matchmaking lobby"})
+	button.style.font = "heading-2"
+	button.style.font_color = {212, 212, 212}
+	button.style.minimal_height = 38
+	button.style.minimal_width = 200
+	button.style.padding = -2
+end
+
 local function on_player_joined_game(event)
 	local player = game.players[event.player_index]
 
@@ -456,6 +470,7 @@ local function on_player_joined_game(event)
 	--end
 
 	create_sprite_button(player)
+    draw_return_lobby(player)
 	Public.create_main_gui(player)
 end
 
