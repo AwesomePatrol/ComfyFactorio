@@ -77,7 +77,7 @@ local auto_feed_values = {
     [34] = {0, 0, 360, 0, 0, 0, 0},
     [36] = {0, 0, 360, 0, 0, 0, 0},
     [38] = {0, 0, 360, 0, 0, 0, 0},
-    [40] = {0, 0, 0, 100, 0, 0, 0}
+    [40] = {0, 0, 480, 0, 0, 0, 0}
 }
 
 local function auto_feed()
@@ -104,7 +104,7 @@ local function auto_feed()
         end
     end
     if minute > 40 then
-        feeding.auto_feed_biters("south_biters", "chemical-science-pack", 100, minute)
+        feeding.auto_feed_biters("south_biters", "military-science-pack", 240, minute)
     end
 end
 
