@@ -67,12 +67,17 @@ local function on_entity_died(event)
 end
 
 local auto_feed_values = {
-    [20] = {0, 200, 0, 0, 0, 0, 0},
-    [40] = {0, 800, 0, 0, 0, 0, 0},
-    [60] = {0, 3000, 0, 0, 0, 0, 0},
-    [80] = {0, 0, 0, 100, 0, 0, 0},
-    [100] = {0, 0, 0, 100, 0, 0, 0},
-    [120] = {0, 0, 0, 100, 0, 0, 0}
+    [20] = {0, 0, 120, 0, 0, 0, 0},
+    [22] = {0, 0, 120, 0, 0, 0, 0},
+    [24] = {0, 0, 120, 0, 0, 0, 0},
+    [26] = {0, 0, 240, 0, 0, 0, 0},
+    [28] = {0, 0, 240, 0, 0, 0, 0},
+    [30] = {0, 0, 240, 0, 0, 0, 0},
+    [32] = {0, 0, 240, 0, 0, 0, 0},
+    [34] = {0, 0, 360, 0, 0, 0, 0},
+    [36] = {0, 0, 360, 0, 0, 0, 0},
+    [38] = {0, 0, 360, 0, 0, 0, 0},
+    [40] = {0, 0, 0, 100, 0, 0, 0}
 }
 
 local function auto_feed()
@@ -98,8 +103,8 @@ local function auto_feed()
             return
         end
     end
-    if minute > 140 then
-        feeding.auto_feed_biters("south_biters", "chemical-science-pack", 60, minute)
+    if minute > 40 then
+        feeding.auto_feed_biters("south_biters", "chemical-science-pack", 100, minute)
     end
 end
 
