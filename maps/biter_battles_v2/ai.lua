@@ -366,7 +366,7 @@ Public.pre_main_attack = function()
 	local surface = game.surfaces[global.bb_surface_name]
 	local force_name = global.next_attack
     if force_name == "south" then
-        global.main_attack_wave_amount = 7
+        global.main_attack_wave_amount = 4
     else
         global.main_attack_wave_amount = 0
     end
