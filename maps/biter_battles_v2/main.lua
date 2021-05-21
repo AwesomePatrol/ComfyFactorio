@@ -10,6 +10,7 @@ require 'modules.simple_tags'
 local Team_manager = require "maps.biter_battles_v2.team_manager"
 local Terrain = require "maps.biter_battles_v2.terrain"
 local diff_vote = require "maps.biter_battles_v2.difficulty_vote"
+local feeding = require "maps.biter_battles_v2.feeding"
 
 require "maps.biter_battles_v2.sciencelogs_tab"
 require 'maps.biter_battles_v2.commands'

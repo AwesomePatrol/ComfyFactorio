@@ -212,6 +212,8 @@ local function feed_biters(player, food)
 	add_stats(player, food, flask_amount ,biter_force_name, evolution_before_feed, threat_before_feed)
 end
 
+local Public = {}
+
 Public.set_biter_modifiers = set_biter_modifiers
 Public.feed_biters = feed_biters
 Public.auto_feed_biters = function(biter_force_name, food, flask_amount, t)
